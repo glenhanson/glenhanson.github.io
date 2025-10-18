@@ -1,1 +1,0 @@
-# glenhanson.github.io
