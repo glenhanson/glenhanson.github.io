@@ -1,0 +1,7 @@
+title: Grayduck Partners
+description: Data-driven consulting for smarter business decisions
+email: info@grayduckpartners.com
+baseurl: ""
+url: "https://grayduckpartners.com"  # change to your domain or GitHub Pages URL
+theme: null
+markdown: kramdown
