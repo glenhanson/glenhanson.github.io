@@ -1,6 +1,15 @@
 <header class="site-header">
-  <div class="container">
-    <h1 class="logo"><a href="/">{{ site.title }}</a></h1>
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+    
+    <!-- Logo + Title -->
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="/">
+        <img src="/images/grayduck_logo.png" alt="Grayduck Partners logo" style="height: 48px;">
+      </a>
+      <h1 class="logo" style="margin: 0;"><a href="/">{{ site.title }}</a></h1>
+    </div>
+
+    <!-- Navigation -->
     <nav class="nav">
       <a href="/">Home</a>
       <a href="/about">About</a>
@@ -8,5 +17,6 @@
       <a href="/portfolio">Portfolio</a>
       <a href="/contact">Contact</a>
     </nav>
+
   </div>
 </header>
