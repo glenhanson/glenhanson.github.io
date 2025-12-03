@@ -3,162 +3,590 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grayduck Partners</title>
+  <title>Grayduck Partners - Data Science & ML Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles */
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary: #004466;
+      --primary-light: #006699;
+      --primary-dark: #002233;
+      --accent: #FF6B35;
+      --text: #1a1a1a;
+      --text-light: #4a4a4a;
+      --bg: #fafafa;
+      --bg-alt: #ffffff;
+      --border: #e0e0e0;
+    }
+
+    * {
       margin: 0;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    a {
-      color: #004466;
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       text-decoration: none;
+      transition: opacity 0.3s ease;
     }
 
-    a:hover {
-      text-decoration: underline;
+    nav .logo:hover {
+      opacity: 0.8;
     }
 
-    /* Header */
-    header {
-      background-color: #004466;
-      color: #ffffff;
-      padding: 2rem 1rem;
-      text-align: center;
+    nav .logo img {
+      height: 40px;
+      width: auto;
     }
 
-    header img {
-      width: 200px;
-      max-width: 80%;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
     }
 
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
+    nav a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
     }
 
-    /* Main Content */
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    nav a:hover {
+      color: var(--primary);
     }
 
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .tagline {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #e55a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    /* Sections */
     section {
-      margin-bottom: 2rem;
+      padding: 5rem 2rem;
     }
 
-    section h2 {
-      color: #004466;
-      margin-bottom: 0.5rem;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .section-header p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Value Props */
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .value-prop {
+      background: var(--bg-alt);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out backwards;
+    }
+
+    .value-prop:nth-child(1) { animation-delay: 0.1s; }
+    .value-prop:nth-child(2) { animation-delay: 0.2s; }
+    .value-prop:nth-child(3) { animation-delay: 0.3s; }
+
+    .value-prop:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 68, 102, 0.15);
+      border-color: var(--primary-light);
+    }
+
+    .value-prop-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
       font-size: 1.8rem;
     }
 
-    section h3 {
-      margin-top: 1rem;
-      font-size: 1.5rem;
-      color: #004466;
+    .value-prop h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
-    section ul, section ol {
-      padding-left: 1.5rem;
+    .value-prop p {
+      color: var(--text-light);
+      line-height: 1.7;
     }
 
-    section ul li, section ol li {
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--bg-alt);
+      padding: 2rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateX(8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .stat {
+      padding: 2rem 1rem;
+    }
+
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--accent);
       margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--bg-alt);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .cta-section p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #eee;
-      font-size: 0.9rem;
-      color: #555;
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 3rem 2rem 2rem;
     }
 
-    /* Responsive Styles */
-    @media (max-width: 600px) {
-      header {
-        padding: 1.5rem 1rem;
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-content {
+      margin-bottom: 2rem;
+    }
+
+    .footer-email {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1.5rem;
       }
 
-      header p {
-        font-size: 1rem;
+      nav .container {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
       }
 
-      section h2 {
-        font-size: 1.5rem;
+      .hero {
+        min-height: 70vh;
       }
 
-      section h3 {
-        font-size: 1.2rem;
+      section {
+        padding: 3rem 1rem;
       }
 
-      main {
-        margin: 1rem auto;
-        padding: 0 0.5rem;
+      .value-props,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <img src="logo.png" alt="Grayduck Partners Logo">
-    <p>Connecting data to the decisions that drive performance.</p>
-  </header>
-
-  <main>
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        Grayduck Partners helps small and mid-sized firms solve complex data challenges and improve decision-making through tailored analytics, automation, and applied machine learning. We provide fractional data leadership and build reliable decision-support systems that save time, reduce uncertainty, and unlock insights.
-      </p>
-
-      <h3>Core Pillars</h3>
-      <ol>
-        <li>
-          <strong>Clarity over complexity</strong><br>
-          We turn messy data and scattered analytics efforts into a clear, focused roadmap that drives decisions.
-        </li>
-        <li>
-          <strong>Practical data leadership</strong><br>
-          We bridge strategy and execution — helping organizations build the right capabilities without over-engineering.
-        </li>
-        <li>
-          <strong>Decisions, not dashboards</strong><br>
-          Our focus is on outcomes and decisions, not vanity metrics or endless reports.
-        </li>
-      </ol>
-    </section>
-
-    <section id="services">
-      <h2>Services</h2>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="grayduck_logo.png" alt="Grayduck Partners">
+        <span>Grayduck Partners</span>
+      </a>
       <ul>
-        <li>Data Strategy and Technical Advising</li>
-        <li>Custom Analytics & Automation Solutions</li>
-        <li>AI & Machine Learning Development</li>
-        <li>Quantitative Research</li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </section>
+    </div>
+  </nav>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email us at <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a></p>
-    </section>
-  </main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Production ML Solutions That Drive Real Decisions</h1>
+        <p class="tagline">
+          We help organizations navigate uncertainty and manage risk through data-driven approaches that deliver measurable business value.
+        </p>
+        <div class="cta-group">
+          <a href="services.html" class="btn btn-primary">Explore Services</a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Value Propositions -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Grayduck Partners?</h2>
+        <p>We bridge the gap between technical sophistication and business outcomes</p>
+      </div>
+      <div class="value-props">
+        <div class="value-prop">
+          <div class="value-prop-icon">📊</div>
+          <h3>Clarity Over Complexity</h3>
+          <p>We turn messy data and scattered analytics efforts into clear, focused roadmaps that drive decisions. No vanity metrics or endless dashboards—just actionable insights.</p>
+        </div>
+        <div class="value-prop">
+          <div class="value-prop-icon">🎯</div>
+          <h3>Production-Ready Solutions</h3>
+          <p>From notebook to production: we build ML systems that actually work in real environments, not just prototypes. End-to-end deployment and monitoring included.</p>
+        </div>
+        <div class="value-prop">
+          <div class="value-prop-icon">🤝</div>
+          <h3>Technical + Business Leadership</h3>
+          <p>We speak both languages. With MBA + MS credentials and proven experience, we translate complex technical work into stakeholder insights that reduce risk and increase clarity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Preview -->
+  <section style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Do</h2>
+        <p>Tailored solutions for complex data challenges</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Applied ML & Data Science</h3>
+          <p>Time series forecasting, predictive modeling, computer vision, and segmentation solutions built for production environments.</p>
+        </div>
+        <div class="service-card">
+          <h3>Operations & Decision Support</h3>
+          <p>Resource optimization, schedule management, and analytical frameworks that improve operational efficiency.</p>
+        </div>
+        <div class="service-card">
+          <h3>Python Development & Automation</h3>
+          <p>API development, workflow automation, and system integration to streamline your processes.</p>
+        </div>
+        <div class="service-card">
+          <h3>Technical Strategy & Leadership</h3>
+          <p>Architecture guidance, solution scoping, and cross-functional collaboration to align technical and business goals.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="services.html" class="btn btn-primary">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color: white;">Experience You Can Trust</h2>
+        <p style="color: rgba(255, 255, 255, 0.9);">Proven track record in high-stakes environments</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <div class="stat-label">Years ML Experience</div>
+        </div>
+        <div class="stat">
+          <span class="stat-number">MBA+MS</span>
+          <div class="stat-label">Technical & Business Expertise</div>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <div class="stat-label">Production-Focused</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>Ready to Turn Uncertainty into Clarity?</h2>
+      <p>Let's discuss how we can help your organization make better decisions through data.</p>
+      <a href="mailto:info@grayduckpartners.com" class="btn btn-primary">Start a Conversation</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Grayduck Partners. All rights reserved.
-  </footer>
-
-</body>
-</html>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-email">
+          <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
+        </div>
+        <p>Connecting data to the decision

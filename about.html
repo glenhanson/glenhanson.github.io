@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Grayduck Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #004466;
+      --primary-light: #006699;
+      --primary-dark: #002233;
+      --accent: #FF6B35;
+      --text: #1a1a1a;
+      --text-light: #4a4a4a;
+      --bg: #fafafa;
+      --bg-alt: #ffffff;
+      --border: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    nav .logo:hover {
+      opacity: 0.8;
+    }
+
+    nav .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .page-hero {
+      margin-top: 80px;
+      padding: 5rem 2rem 3rem;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .page-hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-main {
+      background: var(--bg-alt);
+      padding: 3rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .about-main h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .about-main p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .principles {
+      background: var(--bg);
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .principle {
+      background: var(--bg-alt);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .principle-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: 0.3;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .principle h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .principle p {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .approach {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+    }
+
+    .approach h2 {
+      color: white;
+      text-align: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+
+    .approach-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .approach-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .approach-item h3 {
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+
+    .approach-item p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+    }
+
+    .cta-section {
+      background: var(--bg-alt);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .cta-section p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #e55a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+    }
+
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 3rem 2rem 2rem;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-content {
+      margin-bottom: 2rem;
+    }
+
+    .footer-email {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      nav .container {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 1.5rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .about-main {
+        padding: 2rem;
+      }
+
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="grayduck_logo.png" alt="Grayduck Partners">
+        <span>Grayduck Partners</span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <h1>About Grayduck Partners</h1>
+    <p>Building production ML systems that help organizations navigate uncertainty</p>
+  </section>
+
+  <!-- About Content -->
+  <section>
+    <div class="container">
+      <div class="about-main" style="max-width: 900px; margin: 0 auto;">
+        <h2>Who We Are</h2>
+        <p>
+          Grayduck Partners was founded on a simple belief: data science should drive real decisions, not just create dashboards. We help small and mid-sized organizations cut through complexity and build solutions that actually work in production.
+        </p>
+        <p>
+          What sets us apart is our ability to translate complex technical work into actionable insights. We don't just build models; we help stakeholders understand them, trust them, and use them to make better decisions. We thrive in environments characterized by data, uncertainty, and risk—using both technical skills and communication abilities to help organizations buy down risk, increase clarity, and navigate ambiguity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Principles -->
+  <section class="principles">
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <h2 style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">Core Principles</h2>
+        <p style="color: var(--text-light); font-size: 1.1rem;">The values that guide our work</p>
+      </div>
+      <div class="principles-grid">
+        <div class="principle">
+          <div class="principle-number">01</div>
+          <h3>Clarity Over Complexity</h3>
+          <p>
+            We turn messy data and scattered analytics efforts into a clear, focused roadmap that drives decisions. No vanity metrics or endless reports—just what matters.
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle-number">02</div>
+          <h3>Practical Data Leadership</h3>
+          <p>
+            We bridge strategy and execution—helping organizations build the right capabilities without over-engineering. The goal is progress, not perfection.
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle-number">03</div>
+          <h3>Decisions, Not Dashboards</h3>
+          <p>
+            Our focus is on outcomes and decisions, not creating beautiful visualizations that nobody uses. We build systems that change how organizations operate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="approach">
+    <div class="container">
+      <h2>Our Approach</h2>
+      <div class="approach-content">
+        <div class="approach-item">
+          <h3>Start with the Decision</h3>
+          <p>
+            Every project begins by understanding what decision needs to be made. We work backward from there, building only what's necessary to improve that decision. No gold-plating, no scope creep.
+          </p>
+        </div>
+        <div class="approach-item">
+          <h3>Production from Day One</h3>
+          <p>
+            We don't hand off prototypes and hope they work. Our solutions are built with deployment in mind from the start—proper error handling, monitoring, documentation, and maintainability.
+          </p>
+        </div>
+        <div class="approach-item">
+          <h3>Communicate Constantly</h3>
+          <p>
+            Technical excellence means nothing if stakeholders don't understand or trust the solution. We invest heavily in translation—making complex technical concepts accessible without dumbing them down.
+          </p>
+        </div>
+        <div class="approach-item">
+          <h3>Measure What Matters</h3>
+          <p>
+            Model accuracy is nice, but business impact is what counts. We define success metrics upfront and track them religiously. Did the solution actually improve the decision? That's the question.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>Let's Work Together</h2>
+      <p>Ready to turn data into decisions? Get in touch to discuss your project.</p>
+      <a href="mailto:info@grayduckpartners.com" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-email">
+          <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
+        </div>
+        <p>Connecting data to the decision
