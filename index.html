@@ -15,8 +15,8 @@
       --accent: #FF6B35;
       --text: #1a1a1a;
       --text-light: #4a4a4a;
-      --bg: #fafafa;
-      --bg-alt: #ffffff;
+      --bg: #ffffff;
+      --bg-alt: #f7f9fb;
       --border: #e0e0e0;
     }
 
@@ -29,673 +29,311 @@
     body {
       font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
-      background-color: var(--bg);
-      line-height: 1.7;
-      overflow-x: hidden;
+      background: var(--bg);
+      line-height: 1.6;
+      text-align: center;
     }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid var(--border);
+    /* Header */
+    header {
+      padding: 3rem 2rem 2rem;
     }
 
-    nav .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .logo {
+      margin-bottom: 1.25rem;
     }
 
-    nav .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      color: var(--primary);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      transition: opacity 0.3s ease;
-    }
-
-    nav .logo:hover {
-      opacity: 0.8;
-    }
-
-    nav .logo img {
-      height: 40px;
+    .logo img {
+      height: 90px;
       width: auto;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    /* Hero Section */
-    .hero {
-      margin-top: 80px;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-content {
-      max-width: 750px;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero h1 {
+    header h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      color: white;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      color: var(--primary);
       font-weight: 400;
-      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
     }
 
-    .hero .tagline {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      line-height: 1.7;
-      max-width: 600px;
+    .contact-line {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
     }
 
-    .btn {
-      padding: 1rem 2rem;
+    .contact-line a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
       border: none;
+      border-top: 2px solid var(--accent);
+      width: 60px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.5rem 2rem;
+    }
+
+    section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* How I Work */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 1.5rem auto 0;
+    }
+
+    .how-item h3 {
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .how-item p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* Examples */
+    .examples {
+      background: var(--bg-alt);
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      max-width: 800px;
+      margin: 1.5rem auto 0;
+    }
+
+    .example {
+      background: var(--bg);
+      border-radius: 6px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .example-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .example h3 {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .example p {
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    /* Background */
+    .credentials {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .credential {
+      font-size: 0.92rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Contact */
+    .contact {
+      padding: 2.5rem 2rem 2rem;
+    }
+
+    .contact a {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
       border-radius: 4px;
       font-size: 1rem;
       font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
       transition: all 0.3s ease;
-      font-family: 'IBM Plex Sans', sans-serif;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-primary:hover {
+    .contact a:hover {
       background: #e55a2a;
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: white;
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Sections */
-    section {
-      padding: 5rem 2rem;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      margin-bottom: 3rem;
-    }
-
-    .section-header h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .section-header p {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      max-width: 700px;
-    }
-
-    /* Problem section */
-    .problem {
-      background: var(--bg-alt);
-    }
-
-    .problem-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .problem-content p {
-      font-size: 1.15rem;
-      color: var(--text-light);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    /* How I Work */
-    .how-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .how-card {
-      background: var(--bg-alt);
-      padding: 2.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-
-    .how-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0, 68, 102, 0.1);
-    }
-
-    .how-card h3 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .how-card p {
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    /* Examples */
-    .examples {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      color: white;
-    }
-
-    .examples .section-header h2 {
-      color: white;
-    }
-
-    .examples .section-header p {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .example-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .example {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 8px;
-    }
-
-    .example-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .example h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
-      color: white;
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .example p {
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
-    /* Background */
-    .background {
-      background: var(--bg-alt);
-    }
-
-    .background-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .background-content p {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .credentials {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .credential {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .credential h4 {
-      color: var(--primary);
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .credential p {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      margin-bottom: 0;
-    }
-
-    /* CTA Section */
-    .cta-section {
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .cta-section p {
-      font-size: 1.15rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     /* Footer */
     footer {
-      background: var(--primary-dark);
-      color: rgba(255, 255, 255, 0.8);
-      padding: 3rem 2rem 2rem;
-    }
-
-    footer .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-light);
     }
 
     footer a {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--primary-light);
       text-decoration: none;
-      transition: color 0.3s ease;
     }
 
     footer a:hover {
-      color: white;
-    }
-
-    .footer-email {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-bottom {
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.9rem;
+      text-decoration: underline;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      nav .container {
-        padding: 0.75rem 1rem;
-        flex-direction: column;
-        gap: 0.5rem;
+      header {
+        padding: 2rem 1.5rem 1.5rem;
       }
 
-      nav .logo {
-        font-size: 1.25rem;
-      }
-
-      nav .logo img {
-        height: 32px;
-      }
-
-      nav ul {
-        gap: 1.25rem;
-        font-size: 0.85rem;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-
-      .hero .container {
-        padding: 3rem 1.5rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .hero .tagline {
-        font-size: 1.05rem;
-        margin-bottom: 2rem;
+      .logo img {
+        height: 56px;
       }
 
       section {
-        padding: 3rem 1.5rem;
+        padding: 2rem 1.5rem;
       }
 
-      .section-header h2 {
-        font-size: 1.75rem;
-      }
-
-      .section-header p {
-        font-size: 1rem;
-      }
-
-      .problem-content p {
-        font-size: 1.05rem;
-      }
-
-      .how-cards,
-      .example-grid {
+      .how-grid {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1.5rem;
+        max-width: 400px;
       }
 
-      .how-card {
-        padding: 2rem;
-      }
-
-      .example {
-        padding: 1.75rem;
-      }
-
-      .example h3 {
-        font-size: 1.15rem;
-      }
-
-      .cta-group {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .background-content p {
-        font-size: 1rem;
+      .examples-grid {
+        grid-template-columns: 1fr;
       }
 
       .credentials {
         flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .credential {
-        background: var(--bg);
-        padding: 1.25rem;
-        border-radius: 6px;
-      }
-
-      .cta-section h2 {
-        font-size: 1.75rem;
-      }
-
-      .cta-section p {
-        font-size: 1rem;
+        gap: 0.75rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="grayduck_logo.png" alt="Grayduck Partners">
-        <span>Grayduck Partners</span>
-      </a>
-      <ul>
-        <li><a href="#work">How I Work</a></li>
-        <li><a href="#examples">Examples</a></li>
-        <li><a href="#background">Background</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Fractional Technical Leadership for Data and AI</h1>
-        <p class="tagline">
-          Businesses hire me to build production systems, shape strategy, and fill technical leadership gaps. I work with companies where data and AI are core to the product or to running the business.
-        </p>
-        <div class="cta-group">
-          <a href="#contact" class="btn btn-primary">Get in Touch</a>
-          <a href="#work" class="btn btn-secondary">How I Work</a>
-        </div>
+  <header>
+    <div class="logo">
+      <img src="grayduck_logo.png" alt="Grayduck Partners">
+    </div>
+    <h1>Fractional Technical Leadership for Data and AI</h1>
+    <p class="contact-line">
+      <strong>Glen Hanson</strong> · <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
+    </p>
+    <hr>
+  </header>
+
+  <section>
+    <h2>What I Do</h2>
+    <p>
+      Businesses hire me to build production systems, shape strategy, and fill technical leadership gaps. I work with companies where data and AI are core to the product or to running the business. You need senior technical leadership but don't need (or can't justify) a full-time hire. That's where I come in.
+    </p>
+  </section>
+
+  <section>
+    <h2>How I Work</h2>
+    <div class="how-grid">
+      <div class="how-item">
+        <h3>Embed in Your Team</h3>
+        <p>I work alongside your engineers. Standups, PRs, architecture decisions. Hands on and strategic.</p>
+      </div>
+      <div class="how-item">
+        <h3>Build Production Systems</h3>
+        <p>ML models, data pipelines, APIs, infrastructure. Designed, built, and deployed. Not prototypes.</p>
+      </div>
+      <div class="how-item">
+        <h3>Shape Strategy</h3>
+        <p>Roadmaps, feasibility, prioritization. Helping leadership decide where to invest in data and AI.</p>
       </div>
     </div>
   </section>
 
-  <!-- The Problem -->
-  <section class="problem">
-    <div class="container">
-      <div class="problem-content">
-        <div class="section-header">
-          <h2>The Gap I Fill</h2>
-        </div>
-        <p>
-          You need senior technical leadership. Someone who can architect production ML systems, guide product strategy around AI, and translate between engineering teams and the business. But you don't need (or can't justify) a full-time hire.
-        </p>
-        <p>
-          That's where I come in. I embed directly into your team as a fractional ML engineer, tech lead, head of product, or whatever the role needs to be. I bring the engineering depth to build real systems and the business judgment to decide what's worth building.
-        </p>
-        <p>
-          Most engagements start in one place and expand as the work reveals what's actually needed. That's by design. I'm not here to deliver a scoped project and disappear. I'm here to fill a leadership gap and help you build the right thing.
-        </p>
+  <section class="examples">
+    <h2>Engagement Examples</h2>
+    <div class="examples-grid">
+      <div class="example">
+        <div class="example-label">Fractional ML Engineer</div>
+        <h3>Building the ML that powers the product</h3>
+        <p>Sole ML engineer on a product team, building and deploying machine learning systems behind a SaaS platform end to end.</p>
+      </div>
+      <div class="example">
+        <div class="example-label">Fractional Head of Product</div>
+        <h3>Guiding a roadmap with domain expertise</h3>
+        <p>Blending deep domain knowledge with engineering to shape product direction and drive data R&D.</p>
+      </div>
+      <div class="example">
+        <div class="example-label">Fractional Tech Lead</div>
+        <h3>Stepping up beyond data science</h3>
+        <p>Brought on for data science, stepped into leadership. Designing production systems and leading the team.</p>
+      </div>
+      <div class="example">
+        <div class="example-label">Fractional COO</div>
+        <h3>Bridging vision and execution</h3>
+        <p>Translating a non-technical founder's expertise into a product roadmap and driving it to market.</p>
       </div>
     </div>
   </section>
 
-  <!-- How I Work -->
-  <section id="work">
-    <div class="container">
-      <div class="section-header">
-        <h2>How I Work</h2>
-        <p>I don't hand off slide decks or prototypes that sit on a shelf. Everything I build goes into production.</p>
-      </div>
-      <div class="how-cards">
-        <div class="how-card">
-          <h3>I Embed in Your Team</h3>
-          <p>I work alongside your engineers, not above them. I join standups, review PRs, and build alongside the team while also stepping back to think about architecture, strategy, and what's next.</p>
-        </div>
-        <div class="how-card">
-          <h3>I Build Production Systems</h3>
-          <p>ML models, data pipelines, APIs, infrastructure. I design, build, and deploy with AWS CDK, Docker, and CI/CD. This isn't notebook-and-a-prayer data science. It's engineering.</p>
-        </div>
-        <div class="how-card">
-          <h3>I Shape Strategy</h3>
-          <p>I inform roadmaps, identify what's technically feasible, scope what will actually move the needle, and help leadership make better decisions about where to invest in data and AI.</p>
-        </div>
-      </div>
+  <section>
+    <h2>Background</h2>
+    <p>
+      Career spanning startups (first technical hire) and large consulting firms (high-stakes ML and data systems). Also working with professional service firms on technology strategy, workflows, and automation.
+    </p>
+    <div class="credentials">
+      <span class="credential">MS, Applied Data Science</span>
+      <span class="credential">MBA</span>
+      <span class="credential">10+ Years in Data & ML</span>
     </div>
   </section>
 
-  <!-- Examples -->
-  <section class="examples" id="examples">
-    <div class="container">
-      <div class="section-header">
-        <h2>What This Looks Like</h2>
-        <p>Every engagement is different. Here's the pattern.</p>
-      </div>
-      <div class="example-grid">
-        <div class="example">
-          <div class="example-label">Fractional ML Engineer</div>
-          <h3>Building the ML that powers the product</h3>
-          <p>Serving as the sole ML engineer on a product team, designing, building, and deploying the machine learning systems behind a SaaS platform, end to end from research through production infrastructure.</p>
-        </div>
-        <div class="example">
-          <div class="example-label">Fractional Head of Product</div>
-          <h3>Guiding a product roadmap with deep domain expertise</h3>
-          <p>Blending technical engineering skills with specialized domain knowledge to shape the product direction, build backend infrastructure, and drive data R&D.</p>
-        </div>
-        <div class="example">
-          <div class="example-label">Fractional Tech Lead</div>
-          <h3>Stepping up when the project needs more than a data scientist</h3>
-          <p>Brought on for data science work, then stepped into a broader leadership role. Designing production systems, leading the engineering team, and identifying new revenue opportunities.</p>
-        </div>
-        <div class="example">
-          <div class="example-label">Fractional COO</div>
-          <h3>Bridging a founder's vision and product execution</h3>
-          <p>A non-technical founder needed someone who could translate their domain expertise into a product roadmap. Prioritizing features, managing resources, and driving a product to market.</p>
-        </div>
-      </div>
-    </div>
+  <section class="contact" id="contact">
+    <h2>Let's Talk</h2>
+    <p>If you're building around data or AI and need senior technical leadership, I'd like to hear what you're working on.</p>
+    <br>
+    <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
   </section>
 
-  <!-- Background -->
-  <section class="background" id="background">
-    <div class="container">
-      <div class="background-content">
-        <div class="section-header">
-          <h2>Background</h2>
-        </div>
-        <p>
-          I've spent my career at the intersection of data science, engineering, and business strategy. From startups where I was the first technical hire to large consulting firms delivering ML and data systems in high-stakes environments.
-        </p>
-        <p>
-          I also work with professional service firms like accountants, attorneys, and financial advisors on technology strategy, document workflows, and automation that lets them spend less time on compliance overhead and more time serving their clients.
-        </p>
-        <div class="credentials">
-          <div class="credential">
-            <h4>MS, Applied Data Science</h4>
-            <p>Technical depth in ML, statistics, and computational methods</p>
-          </div>
-          <div class="credential">
-            <h4>MBA</h4>
-            <p>Business strategy, operations, and stakeholder communication</p>
-          </div>
-          <div class="credential">
-            <h4>10+ Years in Data & ML</h4>
-            <p>From startups to defense, always production, always applied</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="cta-section" id="contact">
-    <div class="container">
-      <h2>Let's Talk</h2>
-      <p>If you're building around data or AI and need senior technical leadership, I'd like to hear what you're working on.</p>
-      <a href="mailto:info@grayduckpartners.com" class="btn btn-primary">info@grayduckpartners.com</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-email">
-        <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Grayduck Partners</p>
-      </div>
-    </div>
+    &copy; 2025 Grayduck Partners
   </footer>
+
 </body>
 </html>
