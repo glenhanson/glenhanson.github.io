@@ -162,6 +162,63 @@
       line-height: 1.55;
     }
 
+    /* Fixed-Scope Offering */
+    .offering {
+      max-width: 640px;
+      margin: 1.5rem auto 0;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .offering-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .offering h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .offering p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      max-width: none;
+      text-align: left;
+    }
+
+    .offering-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 1.25rem;
+    }
+
+    .offering a.learn-more {
+      display: inline-block;
+      color: var(--primary-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--primary-light);
+      padding-bottom: 1px;
+    }
+
+    .offering a.learn-more:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
     /* Background */
     .credentials {
       display: flex;
@@ -310,6 +367,17 @@
         <h3>Bridging vision and execution</h3>
         <p>Translating a non-technical founder's expertise into a product roadmap and driving it to market.</p>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fixed-Scope Offering</h2>
+    <p>A focused engagement that shows your team where your AI can be trusted to act, designs the architecture to match, and hands them a plan they can build.</p>
+    <div class="offering">
+      <div class="offering-label">New</div>
+      <h3>AI Agent Architecture Review</h3>
+      <p>You have an agent that works in the demo. The question that matters next is whether you can put it in front of decisions where being wrong is expensive, and defend it when someone asks how you know it works. This three-to-four week review maps where your agent can be trusted to act and where a human needs to stay in the loop, designs the architecture and evaluation strategy to match, and hands your team a plan they can build.</p>
+      <a href="services/ai-agent-architecture-review.html" class="learn-more">Learn more &rarr;</a>
     </div>
   </section>
 

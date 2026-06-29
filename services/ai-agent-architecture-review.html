@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Architecture Review &middot; Grayduck Partners</title>
+  <link rel="icon" type="image/png" href="../grayduck_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #004466;
+      --primary-light: #006699;
+      --primary-dark: #002233;
+      --accent: #FF6B35;
+      --text: #1a1a1a;
+      --text-light: #4a4a4a;
+      --bg: #ffffff;
+      --bg-alt: #f7f9fb;
+      --border: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Top bar */
+    .top-bar {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .top-bar a {
+      color: var(--primary-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .top-bar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    header {
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--primary);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 620px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 2px solid var(--accent);
+      width: 60px;
+      margin: 2.5rem auto 0;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    section ul {
+      margin: 1rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    section li {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    section li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .alt {
+      background: var(--bg-alt);
+      padding: 2.5rem 0;
+    }
+
+    .alt-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Phases */
+    .phases {
+      margin-top: 1rem;
+    }
+
+    .phase {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .phase:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .phase-name {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .phase-desc {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Deliverables list */
+    .deliverables {
+      counter-reset: deliv;
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1.25rem;
+    }
+
+    .deliverables li {
+      counter-increment: deliv;
+      padding-left: 2.25rem;
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .deliverables li::before {
+      content: counter(deliv);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+
+    .cta a.button {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .cta a.button:hover {
+      background: #e55a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .phase {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container">
+      <a href="../index.html">&larr; Grayduck Partners</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <header>
+      <div class="eyebrow">Fixed-Scope Offering</div>
+      <h1>AI Agent Architecture Review</h1>
+      <p class="lead">You have an agent that works in the demo. The question that matters is the next one: can you put it in front of decisions where being wrong is expensive, and defend it when someone asks how you know it works?</p>
+      <hr class="divider">
+    </header>
+
+    <section>
+      <h2>The idea behind it</h2>
+      <p>Most teams treat a model's uncertainty as a single number. It isn't. It has a distribution. Operational forecasters have always known this. A summer high-pressure day is one you can call with confidence. A mesoscale convective setup is one you hedge, watch closely, and keep a human on. Forecasters communicate and act differently in each case. They develop a situational relationship with uncertainty.</p>
+      <p>Most teams haven't figured this out yet. They treat uncertainty as one number on a model card, so the system behaves the same whether it's confident or guessing. The fix isn't a better model. It's an architecture and an evaluation strategy that know the difference and act on it.</p>
+    </section>
+
+  </div>
+
+  <div class="alt">
+    <div class="alt-inner">
+      <h2>Who this is for</h2>
+      <p>Teams deploying AI agents into work where mistakes are costly and scrutinized:</p>
+      <ul>
+        <li><strong>Startups building agent products</strong> for regulated or high-stakes domains like finance, legal, compliance, fraud review, healthcare, or insurance. Products that need to survive a serious buyer's diligence, not just a demo.</li>
+        <li><strong>Established firms adopting agents</strong> inside high-stakes professional workflows, where a wrong answer touches a client deliverable, a filing, or a decision of record.</li>
+      </ul>
+      <p style="margin-top: 1rem;">If a wrong answer from your agent would cost real money, trigger a regulator, or lose a client's trust, this is built for you.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section>
+      <h2>The problem it solves</h2>
+      <p>Most agent systems are built to work, then asked, too late, to be relied on. The gaps are predictable and expensive:</p>
+      <ul>
+        <li><strong>Uncertainty is treated as uniform.</strong> The system acts the same when it's confident and when it's guessing, because nothing maps where it can act on its own versus where a human needs to stay in the loop.</li>
+        <li><strong>No seam between the agent and the layer that observes and evaluates it</strong>, so you can't see what it's doing or measure whether it's right.</li>
+        <li><strong>"It seems to work" with nothing behind it.</strong> No defensible answer to how good is good enough, and how do you know?</li>
+      </ul>
+      <p style="margin-top: 1rem;">These aren't model problems. They're architecture and evidence problems, and they're solvable before they become a rebuild.</p>
+    </section>
+
+    <section>
+      <h2>What you get</h2>
+      <p>Four concrete artifacts your engineers can build from on day one. Not a strategy deck.</p>
+      <ol class="deliverables">
+        <li><strong>An uncertainty map.</strong> Where your agent can be trusted to act on its own versus where a human needs to stay in the loop, across the situations it will actually face, so the system's behavior can be matched to what it knows.</li>
+        <li><strong>A target architecture you can stand behind.</strong> A named, diagrammed structure with the right observability and evaluation seams, that acts, pauses, or escalates based on its own confidence. Defensible to a skeptical reviewer: a board, an auditor, a regulator, or your most demanding customer.</li>
+        <li><strong>An evaluation strategy.</strong> The part most advisors can't do: how you'd actually prove the system is good enough to rely on. The right question, the right control, a ground truth strategy that works from what you already have. Your production history is data. I design the sampling and labeling scheme so your domain experts review the minimum necessary to get a defensible answer, not an open-ended review project. "It works" becomes something you can show, not just assert.</li>
+        <li><strong>A prioritized roadmap.</strong> The above, sequenced into work with rough effort, so the team knows what to do first and why.</li>
+      </ol>
+    </section>
+
+  </div>
+
+  <div class="alt">
+    <div class="alt-inner">
+      <h2>How it works</h2>
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-name">Week 1 &middot; Map</div>
+          <div class="phase-desc">I go deep on your system: code, data flow, how the agent decides, where it's evaluated today, and what "wrong" costs you. Working sessions with your team.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-name">Weeks 2&ndash;3 &middot; Design</div>
+          <div class="phase-desc">I map the uncertainty, find the seams, design the target architecture and the evaluation approach. Mid-point readout so there are no surprises.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-name">Week 4 &middot; Deliver</div>
+          <div class="phase-desc">Written deliverables plus a live walkthrough with your team, and the prioritized roadmap.</div>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">Scope is fixed and agreed up front. You get a senior practitioner the whole way, no handoff to a junior team.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section>
+      <h2>Why me</h2>
+      <p>My career started as a military weather forecaster and atmospheric modeler. Work where you develop a situational relationship with uncertainty or you get people hurt. I've spent the years since building production ML and AI systems that bring that same discipline to consequential decisions.</p>
+      <p>The rarer thing: I both draw the architecture and design the evidence that proves it. Most people who can build can't run a real study. Most who can run a study can't build. I've done exactly this engagement at depth, taking a venture's exploratory prototype to a clean architecture with a statistical foundation a serious buyer could rely on. Details under NDA. Every recommendation I make is something I could sit down and build.</p>
+    </section>
+
+    <section>
+      <h2>What this is not</h2>
+      <ul>
+        <li>Not an "AI readiness" questionnaire or a strategy slide deck.</li>
+        <li>Not a vendor or model pitch.</li>
+        <li>Not a generic audit. It produces engineering artifacts your team executes against.</li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>Take the next step</h2>
+      <p>A 30-minute scoping call to see if this fits. No charge, no pitch. If it's a fit, I'll send a one-page scope and a fixed price.</p>
+      <a href="mailto:glen@grayduckpartners.com?subject=AI%20Agent%20Architecture%20Review" class="button">glen@grayduckpartners.com</a>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      &copy; 2025 Grayduck Partners &middot; <a href="../index.html">grayduckpartners.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
+</content>
+</invoke>
