@@ -35,9 +35,9 @@
       text-align: center;
     }
 
-    /* Header */
+    /* Hero */
     header {
-      padding: 3rem 2rem 2rem;
+      padding: 3rem 2rem 2.5rem;
     }
 
     .logo {
@@ -51,10 +51,18 @@
 
     header h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-size: clamp(1.85rem, 3.8vw, 2.5rem);
       color: var(--primary);
       font-weight: 400;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
     }
 
     .contact-line {
@@ -72,7 +80,7 @@
       text-decoration: underline;
     }
 
-    hr {
+    hr.accent {
       border: none;
       border-top: 2px solid var(--accent);
       width: 60px;
@@ -81,7 +89,7 @@
 
     /* Sections */
     section {
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem;
     }
 
     section h2 {
@@ -89,88 +97,54 @@
       font-size: clamp(1.4rem, 2.5vw, 1.75rem);
       color: var(--primary);
       font-weight: 400;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    section p {
-      font-size: 1.05rem;
+    /* Approach — two-column */
+    .approach {
+      background: var(--bg-alt);
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .approach-col h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .approach-col p {
+      font-size: 1rem;
       color: var(--text-light);
       line-height: 1.7;
-      max-width: 640px;
-      margin: 0 auto;
     }
 
-    /* How I Work */
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 800px;
-      margin: 1.5rem auto 0;
+    /* Offering — card with two-column interior */
+    .offering-section h2 {
+      margin-bottom: 1.5rem;
     }
 
-    .how-item h3 {
-      font-size: 1rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .how-item p {
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    /* Examples */
-    .examples {
-      background: var(--bg-alt);
-    }
-
-    .examples-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      max-width: 800px;
-      margin: 1.5rem auto 0;
-    }
-
-    .example {
-      background: var(--bg);
-      border-radius: 6px;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-    }
-
-    .example-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0.35rem;
-    }
-
-    .example h3 {
-      font-size: 0.95rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .example p {
-      font-size: 0.88rem;
-      line-height: 1.55;
-    }
-
-    /* Fixed-Scope Offering */
     .offering {
-      max-width: 640px;
-      margin: 1.5rem auto 0;
-      background: var(--bg-alt);
+      max-width: 880px;
+      margin: 0 auto;
+      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 2rem;
       text-align: left;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
     }
 
     .offering-label {
@@ -184,7 +158,7 @@
 
     .offering h3 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       color: var(--primary);
       font-weight: 400;
       margin-bottom: 0.75rem;
@@ -192,15 +166,8 @@
 
     .offering p {
       font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      max-width: none;
-      text-align: left;
-    }
-
-    .offering-meta {
-      font-size: 0.85rem;
       color: var(--text-light);
+      line-height: 1.65;
       margin-bottom: 1.25rem;
     }
 
@@ -219,28 +186,44 @@
       border-bottom-color: var(--accent);
     }
 
-    /* Background */
-    .credentials {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
+    .offering-deliverables h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .offering-deliverables ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .offering-deliverables li {
+      font-size: 0.92rem;
+      color: var(--text);
+      padding: 0.5rem 0;
       border-top: 1px solid var(--border);
     }
 
-    .credential {
-      font-size: 0.92rem;
-      color: var(--primary);
-      font-weight: 600;
+    .offering-deliverables li:last-child {
+      border-bottom: 1px solid var(--border);
     }
 
     /* Contact */
     .contact {
-      padding: 2.5rem 2rem 2rem;
+      padding: 3rem 2rem 2.5rem;
     }
 
-    .contact a {
+    .contact p {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .contact a.button {
       display: inline-block;
       padding: 0.85rem 2rem;
       background: var(--accent);
@@ -252,7 +235,7 @@
       transition: all 0.3s ease;
     }
 
-    .contact a:hover {
+    .contact a.button:hover {
       background: #e55a2a;
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
@@ -264,6 +247,21 @@
       border-top: 1px solid var(--border);
       font-size: 0.85rem;
       color: var(--text-light);
+    }
+
+    .credentials-line {
+      margin-bottom: 0.35rem;
+    }
+
+    .credentials-line span {
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .credentials-line span + span::before {
+      content: " · ";
+      color: var(--text-light);
+      font-weight: 400;
     }
 
     footer a {
@@ -278,7 +276,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       header {
-        padding: 2rem 1.5rem 1.5rem;
+        padding: 2rem 1.5rem 2rem;
       }
 
       .logo img {
@@ -286,22 +284,18 @@
       }
 
       section {
-        padding: 2rem 1.5rem;
+        padding: 2.25rem 1.5rem;
       }
 
-      .how-grid {
+      .approach-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        max-width: 400px;
+        gap: 2rem;
       }
 
-      .examples-grid {
+      .offering {
         grid-template-columns: 1fr;
-      }
-
-      .credentials {
-        flex-direction: column;
-        gap: 0.75rem;
+        gap: 1.75rem;
+        padding: 1.75rem;
       }
     }
   </style>
@@ -312,95 +306,60 @@
     <div class="logo">
       <img src="grayduck_logo.png" alt="Grayduck Partners">
     </div>
-    <h1>Fractional Technical Leadership for Data and AI</h1>
-    <p class="contact-line">
-      <strong>Glen Hanson</strong> · <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
+    <h1>AI systems for decisions that matter.</h1>
+    <p class="hero-lead">
+      I help teams put AI in front of decisions where being wrong is expensive: credit calls, compliance judgments, professional work that touches a client deliverable or a filing of record, anywhere outcomes need to be trustworthy and actionable. Fractional engagements, embedded in your team as ML engineer, tech lead, or head of product, depending on what the work needs.
     </p>
-    <hr>
+    <p class="contact-line">
+      <strong>Glen Hanson</strong> &middot; <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
+    </p>
+    <hr class="accent">
   </header>
 
-  <section>
-    <h2>What I Do</h2>
-    <p>
-      Businesses hire me to build production systems, shape strategy, and fill technical leadership gaps. I work with companies where data and AI are core to the product or to running the business. You need senior technical leadership but don't need (or can't justify) a full-time hire. That's where I come in.
-    </p>
-  </section>
-
-  <section>
-    <h2>How I Work</h2>
-    <div class="how-grid">
-      <div class="how-item">
-        <h3>Embed in Your Team</h3>
-        <p>I work alongside your engineers. Standups, PRs, architecture decisions. Hands on and strategic.</p>
+  <section class="approach">
+    <h2>My approach</h2>
+    <div class="approach-grid">
+      <div class="approach-col">
+        <h3>A forecaster's discipline</h3>
+        <p>I started as a military weather forecaster and atmospheric scientist. In that world, uncertainty is a distribution, not a single number, and treating it as one is how missions fail. That discipline is what I bring to AI systems: knowing where a model can be trusted to act on its own, and where more thoughtful design is needed to tap into human-led expertise.</p>
       </div>
-      <div class="how-item">
-        <h3>Build Production Systems</h3>
-        <p>ML models, data pipelines, APIs, infrastructure. Designed, built, and deployed. Not prototypes.</p>
-      </div>
-      <div class="how-item">
-        <h3>Shape Strategy</h3>
-        <p>Roadmaps, feasibility, prioritization. Helping leadership decide where to invest in data and AI.</p>
+      <div class="approach-col">
+        <h3>Architecture and evidence, together</h3>
+        <p>Most people who can build production AI can't design the study that proves it works. Most people who can design that study can't build. I do both. The architecture and the evidence, together, which is what it takes to deploy AI when results matter.</p>
       </div>
     </div>
   </section>
 
-  <section class="examples">
-    <h2>Engagement Examples</h2>
-    <div class="examples-grid">
-      <div class="example">
-        <div class="example-label">Fractional ML Engineer</div>
-        <h3>Building the ML that powers the product</h3>
-        <p>Sole ML engineer on a product team, building and deploying machine learning systems behind a SaaS platform end to end.</p>
-      </div>
-      <div class="example">
-        <div class="example-label">Fractional Head of Product</div>
-        <h3>Guiding a roadmap with domain expertise</h3>
-        <p>Blending deep domain knowledge with engineering to shape product direction and drive data R&D.</p>
-      </div>
-      <div class="example">
-        <div class="example-label">Fractional Tech Lead</div>
-        <h3>Stepping up beyond data science</h3>
-        <p>Brought on for data science, stepped into leadership. Designing production systems and leading the team.</p>
-      </div>
-      <div class="example">
-        <div class="example-label">Fractional COO</div>
-        <h3>Bridging vision and execution</h3>
-        <p>Translating a non-technical founder's expertise into a product roadmap and driving it to market.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Fixed-Scope Offering</h2>
-    <p>A focused engagement that shows your team where your AI can be trusted to act, designs the architecture to match, and hands them a plan they can build.</p>
+  <section class="offering-section">
     <div class="offering">
-      <div class="offering-label">New</div>
-      <h3>AI Agent Architecture Review</h3>
-      <p>You have an agent that works in the demo. The question that matters next is whether you can put it in front of decisions where being wrong is expensive, and defend it when someone asks how you know it works. This three-to-four week review maps where your agent can be trusted to act and where a human needs to stay in the loop, designs the architecture and evaluation strategy to match, and hands your team a plan they can build.</p>
-      <a href="services/ai-agent-architecture-review.html" class="learn-more">Learn more &rarr;</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>Background</h2>
-    <p>
-      Career spanning startups (first technical hire) and large consulting firms (high-stakes ML and data systems). Also working with professional service firms on technology strategy, workflows, and automation.
-    </p>
-    <div class="credentials">
-      <span class="credential">MS, Applied Data Science</span>
-      <span class="credential">MBA</span>
-      <span class="credential">10+ Years in Data & ML</span>
+      <div class="offering-main">
+        <div class="offering-label">Fixed-Scope Offering</div>
+        <h3>AI Agent Architecture Review</h3>
+        <p>You have an agent that works in the demo. The question that matters next is whether you can put it in front of decisions where being wrong is expensive, and defend it when someone asks how you know it works. This three-to-four week review maps where your agent can be trusted to act and where a human needs to stay in the loop, designs the architecture and evaluation strategy to match, and hands your team a plan they can build.</p>
+        <a href="services/ai-agent-architecture-review.html" class="learn-more">Learn more &rarr;</a>
+      </div>
+      <div class="offering-deliverables">
+        <h4>What you get</h4>
+        <ul>
+          <li>An uncertainty map</li>
+          <li>A target architecture</li>
+          <li>An evaluation strategy</li>
+          <li>A prioritized roadmap</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="contact" id="contact">
-    <h2>Let's Talk</h2>
+    <h2>Let's talk</h2>
     <p>If you're building around data or AI and need senior technical leadership, I'd like to hear what you're working on.</p>
-    <br>
-    <a href="mailto:info@grayduckpartners.com">info@grayduckpartners.com</a>
+    <a href="mailto:info@grayduckpartners.com" class="button">info@grayduckpartners.com</a>
   </section>
 
   <footer>
+    <div class="credentials-line">
+      <span>MS, Applied Data Science</span><span>MBA</span><span>10+ Years in Data & ML</span>
+    </div>
     &copy; 2025 Grayduck Partners
   </footer>
 
