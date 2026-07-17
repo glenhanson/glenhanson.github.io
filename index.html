@@ -128,6 +128,30 @@
       line-height: 1.7;
     }
 
+    /* POV — two-column */
+    .pov-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .pov-col h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .pov-col p {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
     /* Offering — card with two-column interior */
     .offering-section h2 {
       margin-bottom: 1.5rem;
@@ -292,6 +316,11 @@
         gap: 2rem;
       }
 
+      .pov-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
       .offering {
         grid-template-columns: 1fr;
         gap: 1.75rem;
@@ -329,6 +358,20 @@
       <div class="approach-col">
         <h3>Architecture and evidence, together</h3>
         <p>Most people who can build production AI can't design the study that proves it works. Most people who can design that study can't build. I do both. The architecture and the evidence, together, which is what it takes to deploy AI when results matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pov-section">
+    <h2>What decision-grade actually means in practice</h2>
+    <div class="pov-grid">
+      <div class="pov-col">
+        <h3>Trust doesn't transfer</h3>
+        <p>Change the model, the prompt, or the agent, and the evidence has to be rebuilt from scratch. There is no universal "this AI is safe" stamp, and pretending otherwise is how teams get burned.</p>
+      </div>
+      <div class="pov-col">
+        <h3>A real signal isn't the same as one you can act on</h3>
+        <p>Passing a statistical test isn't the same as being safe to bet a decision on. I report the honest picture of what an AI can be trusted to do, not the flattering one.</p>
       </div>
     </div>
   </section>
